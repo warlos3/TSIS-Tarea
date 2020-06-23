@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Alumno Nuevo</title>
+<!-- Integración de bootstrap -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+	integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<div th:if="${error != null}" class='alert alert-danger'
+		th:text="${error}" role='alert'></div>
+
+		<hr>
+		<div class="container">
+			<!-- Container -->
+			<div class="card">
+				<h4 class="card-header">
+					<strong>Registro Alumno</strong>
+				</h4>
+				<div class="card-body">
+					<form th:action="@{/save}" method="post" th:object="${alumno}">
+
+						<input th:if="${alumno.matricula != null}" type="hidden"
+							th:field="*{matricula}" /> <label for="fname">Nombre:</label><br>
+						<input type="text" id="nombre" name="nombre" th:field="*{nombre}"
+							required="required"><br> <label for="lname">Carrera:</label><br>
+						<input type="text" id="carrera" name="carrera"
+							th:field="*{carrera}" required="required"> <br>
+						<br>
+						<button type="submit" class="btn btn-primary">Guardar</button>
+						<br>
+						<br> 
+						<a th:href="@{/}" class="btn btn-secondary">Regresar</a>
+						
+
+					</form>
+				</div>
+			</div>
+		</div>
+		<!-- Container -->
+
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="container">
+			<p>
+				&copy; 2020 UAM-I, Inc. | Temas Selectos: Ingenier&iacute;a de
+				Software | Autor: Carlos Contrera V&aacute;zquez | &middot; <a
+					href="#">Privacy</a> &middot; <a href="#">Terms</a>
+			</p>
+		</div>
+	</footer>
+</body>
+</html>
